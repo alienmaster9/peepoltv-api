@@ -9,7 +9,9 @@ PeepoltvApi::Application.routes.draw do
       get 'sessions' => 'sessions#show', :as => 'show', defaults: {format: :json}
       delete 'sessions' => 'sessions#destroy', :as => 'logout', defaults: {format: :json}
     end
-    resources :users, only: [:show]
+    resources :users, only: [:show] do
+      resources :events, only: [:index]
+    end
 
     resources :channels, only: [:create, :show, :index, :destroy] do
       resources :streams, only: [:index, :update]
@@ -18,6 +20,8 @@ PeepoltvApi::Application.routes.draw do
     resources :streams, only: [:create, :show, :index, :destroy, :update] do
       resources :tags, only: [:create, :destroy]
     end
+
+    resources :events, only: [:index, :show, :create]
 
   end
 
