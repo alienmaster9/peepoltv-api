@@ -22,7 +22,7 @@ describe Api::StreamsController do
       end
 
       it "returns an array of items" do
-        expect(@streams).to have(1).items
+        expect(@streams.size).to eq(1)
         expect(@streams[0]["id"]).to eq(@stream.to_param)
         expect(@streams[0]["title"]).to eq(@stream.title)
       end
@@ -45,7 +45,7 @@ describe Api::StreamsController do
       end
 
       it "returns the streams related to this channel" do
-        expect(@streams).to have(2).items
+        expect(@streams.size).to eq(2)
       end
     end
 
@@ -170,7 +170,7 @@ describe Api::StreamsController do
       end
 
       it "returns the stream with the tags" do
-        expect(@json_stream["tags"]).to have(2).items
+        expect(@json_stream["tags"].size).to eq(2)
       end
 
     end

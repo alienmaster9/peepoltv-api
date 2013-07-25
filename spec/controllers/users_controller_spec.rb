@@ -21,7 +21,7 @@ describe Api::UsersController do
       expect(@json_user["id"]).to eq(@user.id)
       expect(@json_user["name"]).to eq(@user.name)
       expect(@json_user["email"]).to eq(@user.email)
-      expect(@json_user).to have(3).items
+      expect(@json_user.size).to eq(3)
     end
 
   end
