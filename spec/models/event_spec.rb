@@ -23,5 +23,19 @@ describe Event do
         expect(event.type_name).to eq("event")
       end
     end
+
+    describe "#by_user" do
+      it "filters by user" do
+        create(:event)
+        create(:event)
+
+        this_user = create(:user)
+        event = create(:event, user: this_user)
+
+        events = Event.by_user(this_user.id)
+        expect(events.size).to eq(1)
+        expect(events).to include(event)
+      end
+    end
   end
 end

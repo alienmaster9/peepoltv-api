@@ -6,6 +6,9 @@ class Event < ActiveRecord::Base
   belongs_to :user
   belongs_to :stream
 
+  # Scopes
+  scope :by_user, -> user_id { where(user_id: user_id)}
+
 
   # Returns the classname
   def type_name
