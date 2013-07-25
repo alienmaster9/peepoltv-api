@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130717111044) do
+ActiveRecord::Schema.define(:version => 20130725143208) do
 
   create_table "channels", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(:version => 20130717111044) do
   end
 
   add_index "channels", ["hash_token"], :name => "index_channels_on_hash_token", :unique => true
+
+  create_table "events", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "stream_id"
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "events", ["stream_id"], :name => "index_events_on_stream_id"
+  add_index "events", ["user_id"], :name => "index_events_on_user_id"
 
   create_table "streams", :force => true do |t|
     t.string   "url"

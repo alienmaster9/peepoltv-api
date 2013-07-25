@@ -1,0 +1,2 @@
+class Rebroadcast < Event
+end

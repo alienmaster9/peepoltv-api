@@ -1,0 +1,3 @@
+class Livestream < Event
+
+end
