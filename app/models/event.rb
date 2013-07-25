@@ -14,4 +14,8 @@ class Event < ActiveRecord::Base
   def type_name
     self.class.to_s.downcase
   end
+
+  def active_model_serializer
+    EventSerializer
+  end
 end
